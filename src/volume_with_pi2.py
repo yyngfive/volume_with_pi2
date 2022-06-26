@@ -10,8 +10,7 @@ class Volume():
 
     def volume_system(self) -> int:
         devices = AudioUtilities.GetSpeakers()
-        interface = devices.Activate(
-        IAudioEndpointVolume._iid_, CLSCTX_ALL, None)
+        interface = devices.Activate(IAudioEndpointVolume._iid_, CLSCTX_ALL, None)
         volume = cast(interface, POINTER(IAudioEndpointVolume))
         current = round(volume.GetMasterVolumeLevelScalar() * 100)
         ic(volume.GetVolumeRange())
